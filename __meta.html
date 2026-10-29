@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>meta</title></head>
+<body>
+<video id="v1" src="/1/WhatsApp%20Video%202026-10-29%20at%2011.22.45%20AM.mp4" preload="metadata"></video>
+<video id="v2" src="/1/WhatsApp%20Video%202026-10-29%20at%2011.23.01%20AM.mp4" preload="metadata"></video>
+<script>
+window.__meta = {};
+function grab(v, key) {
+  return new Promise(res => {
+    const done = () => { window.__meta[key] = { w: v.videoWidth, h: v.videoHeight, d: v.duration }; res(); };
+    if (v.readyState >= 1) return done();
+    v.addEventListener('loadedmetadata', done, { once: true });
+    v.addEventListener('error', () => { window.__meta[key] = { error: v.error && v.error.code }; res(); }, { once: true });
+    setTimeout(() => { if (!window.__meta[key]) { window.__meta[key] = { error: 'timeout' }; res(); } }, 10000);
+  });
+}
+Promise.all([grab(v1, 'v1'), grab(v2, 'v2')]).then(() => { window.__meta.done = true; });
+</script>
+</body></html>
