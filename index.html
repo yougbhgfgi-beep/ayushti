@@ -1400,7 +1400,7 @@ You are the most beautiful coincidence that entered my life ❤️🥹 Since the
                         const speed = 0.5;
                         const rect = img.parentElement.getBoundingClientRect();
                         const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-                                                                                         if (isVisible) {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         if (isVisible) {
                                                    const offset = (window.innerHeight - rect.top) * speed * 0.1;
                             img.style.transform = `translateY(${offset - 30}px)`;
                         }
@@ -1414,7 +1414,6 @@ You are the most beautiful coincidence that entered my life ❤️🥹 Since the
             const [isLogged, setIsLogged] = useState(false);
             const [secret, setSecret] = useState("");
             const [showEnvelope, setShowEnvelope] = useState(false);
-            const [showSecret, setShowSecret] = useState(false);
             const [showFinalScene, setShowFinalScene] = useState(false);
             const [isPlaying, setIsPlaying] = useState(false);
             const [selectedImage, setSelectedImage] = useState(null);
@@ -1571,15 +1570,6 @@ You are the most beautiful coincidence that entered my life ❤️🥹 Since the
                                 </div>
                             </nav>
 
-                            {/* Popups */}
-                            {showSecret && (
-                                <div className="fixed inset-0 flex items-center justify-center bg-black/60 z-50 animate-fade-in backdrop-blur-sm" onClick={() => setShowSecret(false)}>
-                                    <div className="bg-white px-16 py-12 rounded-[2rem] text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#830b9d] to-[#830b9d] shadow-2xl transform scale-105 transition-transform text-center mx-4">
-                                        LOVE
-                                    </div>
-                                </div>
-                            )}
-
                             {/* Image Lightbox */}
                             {selectedImage && (
                                 <div className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex items-center justify-center animate-fade-in p-4" onClick={() => setSelectedImage(null)}>
@@ -1606,12 +1596,6 @@ You are the most beautiful coincidence that entered my life ❤️🥹 Since the
                                         كريم <span className="text-[rgb(196,13,116)] italic">&</span> آية
                                     </h1>
                                     <p className="text-base xs:text-lg md:text-3xl text-gray-300 mb-8 md:mb-10 font-light px-6">{t.hero.subtitle}</p>
-
-                                    <button onClick={() => { setShowSecret(true); setTimeout(() => setShowSecret(false), 2000); }}
-                                        className="group relative overflow-hidden bg-white text-[rgb(196,13,116)] px-10 py-4 rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 font-bold text-lg border border-pink-100">
-                                        <span className="relative z-10 transition-colors group-hover:text-white">{t.hero.btn}</span>
-                                        <div className="absolute inset-0 bg-gradient-to-r from-[rgb(196,13,116)] to-[rgb(196,13,116)] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
-                                    </button>
 
                                     <div className="absolute bottom-10 animate-bounce text-[rgb(196,13,116)]">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 13l5 5 5-5M7 6l5 5 5-5" /></svg>
