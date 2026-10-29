@@ -728,7 +728,7 @@
            gallery  : صور الألبوم (تقدر تزود أو تقلل العدد)
            ============================================================ */
         const MEDIA = {
-            music: "./New folder/Albumaty.Com_twwlyt_twwlyt_gryit_awy.mp3", // الأغنية الجديدة
+            music: "./New folder/Albumaty.Com_twwlyt_twwlyt_gryit_awy.mp3",
             video: "./New folder/WhatsApp Video 2026-10-29 at 11.22.45 AM.mp4",
             videos: [                        // الفيديوهات (اتنين)
                 "./New folder/WhatsApp Video 2026-10-29 at 11.22.45 AM.mp4",
@@ -979,13 +979,13 @@ You are the most beautiful coincidence that entered my life ❤️🥹 Since the
                 nav: { memories: "ذكرياتنا", video: "فيديوهاتنا", why: "ليه بحبك", gallery: "صورنا" },
                 hero: { subtitle: "إنتِ أجمل صدفة دخلت حياتي ❤️", btn: "دوسي للمفاجأة ✨", script: "Kimo & Anoshte" },
                 login: {
-                    title: "كيمو و أنوشتي",
+                    title: "كريم (كيمو) و آية (أنوشتي)",
                     day: "يوم",
                     month: "شهر",
-                    password: "كلمة السر",
+                    password: "Love",
                     btn: "افتح قلبي",
                     quote: "كل يوم معاك له طعم مختلف 😍",
-                    hint: "تاريخ بدايتنا (يوم / شهر) + الكلمة اللي بينا",
+                    hint: "كلمة السر Love",
                     error: "مش صح يا روحي… جرّبي تاني ❤️"
                 },
                 meter: {
@@ -1066,10 +1066,10 @@ You are the most beautiful coincidence that entered my life ❤️🥹 Since the
                     title: "Kimo & Anoshte",
                     day: "Day",
                     month: "Month",
-                    password: "Password",
+                    password: "Love",
                     btn: "Open My Heart",
                     quote: "Every day with you tastes different 😍",
-                    hint: "Our start date (day / month) + our secret word",
+                    hint: "Password Love",
                     error: "Not quite, my love… try again ❤️"
                 },
                 meter: {
@@ -1396,7 +1396,7 @@ You are the most beautiful coincidence that entered my life ❤️🥹 Since the
                         const rect = img.parentElement.getBoundingClientRect();
                         const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
                         if (isVisible) {
-                            const offset = (window.innerHeight - rect.top) * speed * 0.1;
+                                                       const offset = (window.innerHeight - rect.top) * speed * 0.1;
                             img.style.transform = `translateY(${offset - 30}px)`;
                         }
                     });
@@ -1407,8 +1407,6 @@ You are the most beautiful coincidence that entered my life ❤️🥹 Since the
 
             const [lang, setLang] = useState('ar');
             const [isLogged, setIsLogged] = useState(false);
-            const [day, setDay] = useState("");
-            const [month, setMonth] = useState("");
             const [secret, setSecret] = useState("");
             const [showEnvelope, setShowEnvelope] = useState(false);
             const [showSecret, setShowSecret] = useState(false);
@@ -1422,7 +1420,7 @@ You are the most beautiful coincidence that entered my life ❤️🥹 Since the
             const firstSightDate = new Date("2026-04-01T00:00:00");
 
             const handleLogin = () => {
-                if (day === "1" && month === "4" && secret.trim().toLowerCase() === "love") {
+                if (secret.trim().toLowerCase() === "love") {
                     setIsLogged(true);
                     if (audioRef.current) {
                         const playPromise = audioRef.current.play();
@@ -1529,31 +1527,6 @@ You are the most beautiful coincidence that entered my life ❤️🥹 Since the
                                 </div>
 
                                 <div className="space-y-6">
-                                    <div className="flex gap-4">
-                                        <div className="relative group/input flex-1">
-                                            <input
-                                                type="password"
-                                                placeholder={t.login.day}
-                                                className="w-full bg-white/5 border border-white/10 p-4 md:p-5 rounded-2xl text-white text-center focus:outline-none focus:ring-2 focus:ring-[rgb(196,13,116)]/50 focus:border-[rgb(196,13,116)] transition-all placeholder:text-white/20 text-lg md:text-xl font-bold tracking-widest"
-                                                value={day}
-                                                onChange={(e) => setDay(e.target.value)}
-                                                onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
-                                            />
-                                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none opacity-0 group-hover/input:opacity-100 transition-opacity"></div>
-                                        </div>
-                                        <div className="relative group/input flex-1">
-                                            <input
-                                                type="password"
-                                                placeholder={t.login.month}
-                                                className="w-full bg-white/5 border border-white/10 p-4 md:p-5 rounded-2xl text-white text-center focus:outline-none focus:ring-2 focus:ring-[rgb(196,13,116)]/50 focus:border-[rgb(196,13,116)] transition-all placeholder:text-white/20 text-lg md:text-xl font-bold tracking-widest"
-                                                value={month}
-                                                onChange={(e) => setMonth(e.target.value)}
-                                                onKeyDown={(e) => e.key === 'Enter' && handleLogin()}
-                                            />
-                                            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none opacity-0 group-hover/input:opacity-100 transition-opacity"></div>
-                                        </div>
-                                    </div>
-
                                     <div className="relative group/input">
                                         <input
                                             type="password"
