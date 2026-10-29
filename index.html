@@ -728,13 +728,13 @@
            gallery  : صور الألبوم (تقدر تزود أو تقلل العدد)
            ============================================================ */
         const MEDIA = {
-            music: "./New folder/Albumaty.Com_twwlyt_twwlyt_gryit_awy.mp3",
+            music: "",
             video: "./New folder/WhatsApp Video 2026-10-29 at 11.22.45 AM.mp4",
-            videos: [                        // الفيديوهات (اتنين)
+            videos: [
                 "./New folder/WhatsApp Video 2026-10-29 at 11.22.45 AM.mp4",
                 "./New folder/WhatsApp Video 2026-10-29 at 11.23.01 AM.mp4",
             ],
-            memories: [                      // صور الذكريات (بالترتيب)
+            memories: [
                 "./New folder/WhatsApp Image 2026-10-29 at 11.18.11 AM.jpeg",
                 "./New folder/WhatsApp Image 2026-10-29 at 11.19.39 AM.jpeg",
                 "./New folder/WhatsApp Image 2026-10-29 at 11.1M.jpeg",
@@ -742,7 +742,7 @@
                 "./New folder/WhatsApp Image 2026-10-29.39 AM.jpeg",
                 "./New folder/WhatsApp Image 2026-10-21.19.39 AM.jpeg",
             ],
-            gallery: [                       // صور الألبوم
+            gallery: [
                 "./New folder/WhatsApp Image 2026-10-29 at 11.18.11 AM.jpeg",
                 "./New folder/WhatsApp Image 2026-10-29 at 11.19.39 AM.jpeg",
                 "./New folder/WhatsApp Image 2026-10-29 at 11.1M.jpeg",
@@ -753,7 +753,6 @@
             portrait: "./New folder/WhatsApp Image 2026-10-29 at 11.18.11 AM.jpeg",
         };
 
-        /* مكان نائب يظهر لحد ما تضيف الصورة / الفيديو */
         const MediaPlaceholder = ({ type = "image", label = "", className = "" }) => (
             <div className={`w-full h-full min-h-[180px] flex flex-col items-center justify-center gap-3 p-6 text-center bg-gradient-to-br from-white/[0.07] to-white/[0.02] border-2 border-dashed border-white/20 text-white/40 ${className}`}>
                 {type === "video" ? (
@@ -1383,6 +1382,12 @@ You are the most beautiful coincidence that entered my life ❤️🥹 Since the
                 </div>
             );
         };
+
+        const FancyText = ({ text = "" }) => (
+            <div className="text-gray-800 text-base md:text-lg leading-relaxed whitespace-pre-line">
+                {text}
+            </div>
+        );
 
         // --- Main Component ---
         function LoveWebsite() {
