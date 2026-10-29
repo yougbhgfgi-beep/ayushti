@@ -1247,14 +1247,14 @@ You are the most beautiful coincidence that entered my life ❤️🥹 Since the
             const messages = {
                 ar: [
                     "انتي أجمل صدفة في حياتي 💖",
-                    "ضحكتك بتنور دنيتي يا بصمة ✨",
+                    "ضحكتك بتنور دنيتي يا أنوشتي ✨",
                     "ربنا يخليكي ليا يا كل حياتي 💍",
                     "انتي السند والضهر والروح 🌍",
                     "بحبك أكتر من أي حاجة في الدنيا 🌹"
                 ],
                 en: [
                     "You are the most beautiful coincidence in my life 💖",
-                    "Your smile lights up my world, Basma ✨",
+                    "Your smile lights up my world, Anoshte ✨",
                     "May God keep you for me, my whole life 💍",
                     "You are my support, my back, and my soul 🌍",
                     "I love you more than anything in the world 🌹"
@@ -1292,6 +1292,100 @@ You are the most beautiful coincidence that entered my life ❤️🥹 Since the
                         </div>
                     )}
                 </div>
+            );
+        };
+
+        const ChatLoveSection = ({ lang }) => {
+            const chats = {
+                ar: [
+                    { from: 'أنوشتي', text: 'أنا بحبك جدًا جدًا ❤️', me: false },
+                    { from: 'كريم', text: 'وأنا بحبك أكتر، وعمري كله معاك 💖', me: true },
+                    { from: 'أنوشتي', text: 'تقدر تخليني أضحك في أي وقت؟', me: false },
+                    { from: 'كريم', text: 'أنتِ ضحكتك من أجمل الحاجات اللي بتخلي اليوم يفتح ✨', me: true },
+                    { from: 'أنوشتي', text: 'أنا بحس إنك الأمان اللي نفسي فيه', me: false },
+                    { from: 'كريم', text: 'وأنا بحبك في كل وقت، في الهدوء وفي الشوق وفي كل حاجة 💞', me: true }
+                ],
+                en: [
+                    { from: 'Anoshte', text: 'I love you so much ❤️', me: false },
+                    { from: 'Kimo', text: 'And I love you even more, my whole life is with you 💖', me: true },
+                    { from: 'Anoshte', text: 'Can you make me smile anytime?', me: false },
+                    { from: 'Kimo', text: 'Your smile is the most beautiful thing that brightens my world ✨', me: true },
+                    { from: 'Anoshte', text: 'I feel safe with you.', me: false },
+                    { from: 'Kimo', text: 'And I love you in every quiet moment and every longing moment 💞', me: true }
+                ]
+            };
+
+            return (
+                <section className="py-20 px-4 relative z-10">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-[rgb(196,13,116)]">{lang === 'ar' ? 'شات الحب 💬' : 'Love Chat 💬'}</h2>
+                        <div className="bg-white/8 backdrop-blur-xl border border-white/10 rounded-[2rem] p-5 md:p-8 shadow-[0_0_30px_rgba(196,13,116,0.12)]">
+                            <div className="space-y-4">
+                                {chats[lang].map((msg, i) => (
+                                    <div key={i} className={`flex ${msg.me ? 'justify-end' : 'justify-start'}`}>
+                                        <div className={`max-w-[80%] rounded-2xl px-4 py-3 ${msg.me ? 'bg-gradient-to-r from-pink-600 to-fuchsia-600 text-white' : 'bg-white/10 text-white border border-white/10'}`}>
+                                            <div className="text-[10px] uppercase tracking-[0.2em] opacity-70 mb-1">{msg.from}</div>
+                                            <p className="text-sm md:text-base leading-relaxed">{msg.text}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const BirthdayHighlight = ({ lang }) => {
+            const birthdayDate = new Date('2026-06-01T00:00:00');
+            const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+            useEffect(() => {
+                const tick = () => {
+                    const now = new Date();
+                    const diff = birthdayDate.getTime() - now.getTime();
+                    if (diff <= 0) {
+                        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+                        return;
+                    }
+                    setCountdown({
+                        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+                        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+                        minutes: Math.floor((diff / (1000 * 60)) % 60),
+                        seconds: Math.floor((diff / 1000) % 60)
+                    });
+                };
+
+                tick();
+                const timer = setInterval(tick, 1000);
+                return () => clearInterval(timer);
+            }, []);
+
+            return (
+                <section className="py-16 px-4 relative z-10">
+                    <div className="max-w-5xl mx-auto rounded-[2rem] border border-pink-500/30 bg-gradient-to-r from-pink-600/10 via-white/5 to-purple-600/10 p-6 md:p-10 shadow-[0_0_30px_rgba(196,13,116,0.12)]">
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+                            <div className="text-center md:text-left">
+                                <p className="text-[11px] uppercase tracking-[0.25em] text-pink-200/80 mb-3">{lang === 'ar' ? 'عيد ميلاد' : 'Birthday'}</p>
+                                <h3 className="text-3xl md:text-5xl font-bold text-white">{lang === 'ar' ? 'أنوشتي 🎂' : 'Anoshte 🎂'}</h3>
+                                <p className="mt-3 text-gray-300 text-sm md:text-base">{lang === 'ar' ? 'اليوم اللي بيضحك فيه كل قلب في الدنيا' : 'The day the whole world becomes brighter'}</p>
+                            </div>
+                            <div className="grid grid-cols-4 gap-3 min-w-[280px]">
+                                {[
+                                    { label: lang === 'ar' ? 'يوم' : 'Day', value: countdown.days },
+                                    { label: lang === 'ar' ? 'ساعة' : 'Hour', value: countdown.hours },
+                                    { label: lang === 'ar' ? 'دقيقة' : 'Min', value: countdown.minutes },
+                                    { label: lang === 'ar' ? 'ثانية' : 'Sec', value: countdown.seconds }
+                                ].map((item, index) => (
+                                    <div key={index} className="rounded-2xl border border-white/10 bg-black/20 p-3 text-center backdrop-blur-md">
+                                        <div className="text-2xl md:text-3xl font-bold text-pink-200">{String(item.value).padStart(2, '0')}</div>
+                                        <div className="text-[10px] uppercase tracking-[0.18em] text-white/60 mt-1">{item.label}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
             );
         };
 
@@ -1686,6 +1780,10 @@ You are the most beautiful coincidence that entered my life ❤️🥹 Since the
 
                             <ConstellationGame lang={lang} />
 
+                            <ChatLoveSection lang={lang} />
+
+                            <BirthdayHighlight lang={lang} />
+
                             {/* Timeline Section */}
                             <section id="timeline" className="py-32 px-4 relative z-10">
                                 <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[rgb(196,13,116)] font-premium">{t.timeline.title}</h2>
@@ -1731,37 +1829,41 @@ You are the most beautiful coincidence that entered my life ❤️🥹 Since the
                                 <div className="max-w-4xl mx-auto">
 
                                     {/* Message 2: Video */}
-                                    <div className="bg-white/10 backdrop-blur-md p-8 rounded-[2rem] shadow-2xl border border-pink-500/30 transform hover:scale-[1.02] transition-all duration-500 relative group overflow-hidden max-w-lg mx-auto">
+                                    <div className="bg-white/10 backdrop-blur-md p-8 rounded-[2rem] shadow-2xl border border-pink-500/30 transform hover:scale-[1.02] transition-all duration-500 relative group overflow-hidden max-w-5xl mx-auto">
                                         <div className="absolute inset-0 bg-gradient-to-br from-pink-600/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                         <h3 className="text-2xl font-bold text-pink-200 mb-6 relative z-10">{t.video.title}</h3>
-                                        <div className="relative z-10 rounded-xl overflow-hidden shadow-lg">
-                                            {MEDIA.video ? (
-                                                <video className="w-full" controls id="newVideo"
-                                                    onPlay={() => {
-                                                        if (audioRef.current) {
-                                                            audioRef.current.pause();
-                                                            setIsPlaying(false);
-                                                        }
-                                                    }}
-                                                    onPause={() => {
-                                                        if (audioRef.current && isLogged) {
-                                                            audioRef.current.play();
-                                                            setIsPlaying(true);
-                                                        }
-                                                    }}
-                                                    onEnded={() => {
-                                                        if (audioRef.current && isLogged) {
-                                                            audioRef.current.play();
-                                                            setIsPlaying(true);
-                                                        }
-                                                    }}
-                                                >
-                                                    <source src={MEDIA.video} />
-                                                    Your browser does not support the video tag.
-                                                </video>
-                                            ) : (
-                                                <div className="aspect-video">
-                                                    <MediaPlaceholder type="video" label={lang === 'ar' ? 'مكان الفيديو الجديد' : 'Your new video goes here'} />
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
+                                            {MEDIA.videos && MEDIA.videos.length > 0 ? MEDIA.videos.map((src, i) => (
+                                                <div key={i} className="relative rounded-xl overflow-hidden shadow-lg border border-white/10 bg-black/20">
+                                                    <video className="w-full aspect-video" controls id={i === 0 ? 'newVideo' : `video-${i}`}
+                                                        onPlay={() => {
+                                                            if (audioRef.current) {
+                                                                audioRef.current.pause();
+                                                                setIsPlaying(false);
+                                                            }
+                                                        }}
+                                                        onPause={() => {
+                                                            if (audioRef.current && isLogged) {
+                                                                audioRef.current.play();
+                                                                setIsPlaying(true);
+                                                            }
+                                                        }}
+                                                        onEnded={() => {
+                                                            if (audioRef.current && isLogged) {
+                                                                audioRef.current.play();
+                                                                setIsPlaying(true);
+                                                            }
+                                                        }}
+                                                    >
+                                                        <source src={src} />
+                                                        Your browser does not support the video tag.
+                                                    </video>
+                                                </div>
+                                            )) : (
+                                                <div className="md:col-span-2">
+                                                    <div className="aspect-video">
+                                                        <MediaPlaceholder type="video" label={lang === 'ar' ? 'مكان الفيديو الجديد' : 'Your new video goes here'} />
+                                                    </div>
                                                 </div>
                                             )}
                                         </div>
@@ -1831,6 +1933,8 @@ You are the most beautiful coincidence that entered my life ❤️🥹 Since the
                             </footer>
 
                             <LoveNote lang={lang} />
+                            <ChatLoveSection lang={lang} />
+                            <BirthdayHighlight lang={lang} />
                         </div>
                     )
                     }
